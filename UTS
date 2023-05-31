@@ -1,0 +1,17 @@
+def simulate_rabbit_population(P0, B, D, T, N):
+    population = [P0]  # Jumlah Simulasi Dilakukan
+    for _ in range(1, N + 1):
+        births = B * population[-1]
+        deaths = D * population[-1]
+        population.append(population[-1] + births - deaths)
+    return population
+
+initial_population = 10  # Ukuran populasi awal
+birth_rate = 0.1  # Tingkat kelahiran
+death_rate = 0.05  # Tingkat kematian
+time_step = 1  # Ukuran langkah Tahun
+num_steps = 10  # Jumlah langkah waktu yang akan disimulasikan
+
+population_sizes = simulate_rabbit_population(initial_population, birth_rate, death_rate, time_step, num_steps)
+for index, population in enumerate(population_sizes):
+    print(f"Populasi pada langkah Tahun {index}: {population}")
